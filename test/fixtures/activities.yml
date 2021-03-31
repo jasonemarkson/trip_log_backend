@@ -2,6 +2,12 @@
 
 one:
   name: MyString
+  description: MyString
+  image_url: MyString
+  trip_id: 1
 
 two:
   name: MyString
+  description: MyString
+  image_url: MyString
+  trip_id: 1
