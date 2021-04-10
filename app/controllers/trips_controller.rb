@@ -1,9 +1,43 @@
 class TripsController < ApplicationController
   def index
-    render :json => Trip.all
+    trips = Trip.all
+    render :json => trips
   end
 
   def show
-    render :json => Trip.find(params[:id])
+    trip = Trip.find(params[:id])
+    render :json => trip
+  end
+
+  def create
+
+    trip = Trip.new(trip_params)
+
+    if trip.save
+      render :json => trip
+    else
+      render json: {error: "Trip could not be created"}
+    end
+
+  end
+
+  def update
+    trip = Trip.find(params[:id])
+    trip.update(trip_params)
+
+    render :json => trip
+  end
+
+  def destroy
+    trip = Trip.find(params[:id])
+    trip.delete
+
+    redirect_to 'index'
+  end
+
+  private
+
+  def trip_params
+    params.require(:trip).permit(:name)
   end
 end
