@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   def index
-    render :json => Activity.all
+    activities = Activity.all
+    render :json => activities, except: [:created_at, :updated_at]
   end
 
   def show
