@@ -21,18 +21,17 @@ class TripsController < ApplicationController
 
   end
 
-  def update
-    trip = Trip.find(params[:id])
-    trip.update(trip_params)
+  # def update
+  #   trip = Trip.find(params[:id])
+  #   trip.update(trip_params)
 
-    render :json => trip
-  end
+  #   render :json => trip
+  # end
 
   def destroy
     trip = Trip.find(params[:id])
-    trip.delete
-
-    redirect_to 'index'
+    trip.destroy
+    render json: {message: "Successfully deleted trip"}
   end
 
   private
