@@ -6,7 +6,8 @@ class TripsController < ApplicationController
 
   def show
     trip = Trip.find(params[:id])
-    render :json => trip
+    # debugger
+    render :json => {id: trip.id, name: trip.name, activities: trip.activities}
   end
 
   def create

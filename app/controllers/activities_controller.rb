@@ -1,15 +1,16 @@
 class ActivitiesController < ApplicationController
   def index
     activities = Activity.all
-    render :json => activities, except: [:created_at, :updated_at]
+    render :json => activities, except: [:image_url, :created_at, :updated_at]
   end
 
   def show
-    render :json => Activity.find(params[:id])
+    activity = Activity.find(params[:id])
+    render :json => activity, except: [:image_url, :created_at, :updated_at]
   end
 
   def create
-    debugger
+    # debugger
     activity = Activity.new(activities_params)
 
     if activity.save
